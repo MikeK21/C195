@@ -14,11 +14,7 @@ public class AppointmentsCRUD {
 
     public static void select() throws Exception {
         DataProvider.clearAppointments();
-        // SELECT USERS HERE
-        // RUN THROUGH RESULT SET
-        // rs.next() to iterate through and create a user object and add to array list in DP
         PreparedStatement ps = JDBC.c.prepareStatement("SELECT * FROM APPOINTMENTS");
-        //DBQuery.setStatement(JDBC.c, "SELECT * FROM USERS");
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             Appointment appointment = new Appointment(rs.getInt(1), rs.getString(2),rs.getString(3), rs.getString(4), rs.getString(5), rs.getTimestamp(6), rs.getTimestamp(7), rs.getTimestamp(8), rs.getString(9), rs.getTimestamp(10), rs.getString(11), rs.getInt(12), rs.getInt(13), rs.getInt(14));
