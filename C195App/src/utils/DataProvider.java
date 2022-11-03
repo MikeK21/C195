@@ -101,7 +101,10 @@ public abstract class DataProvider {
         allAppointments.clear();
     }
     public static void addAppointment(Appointment appointment) {allAppointments.add(appointment); };
-    public static ObservableList<Appointment> getAllAppointments() {return allAppointments; };
+    public static ObservableList<Appointment> getAllAppointments() throws Exception {
+        clearAppointments();
+        AppointmentsCRUD.select();
+        return allAppointments; };
 
     // Todays Appointment (Report) DAO
     private static ObservableList<Appointment> todaysAppointments = FXCollections.observableArrayList();
@@ -168,7 +171,7 @@ public abstract class DataProvider {
             return focusAppointments;
     }
 
-    public static boolean checkApptCollide(ZonedDateTime startTime, ZonedDateTime endTime, Integer ApptId) {
+    public static boolean checkApptCollide(ZonedDateTime startTime, ZonedDateTime endTime, Integer ApptId) throws Exception {
 
         Instant passedStartInstant = startTime.toInstant();
         Instant passedEndInstant = endTime.toInstant();
@@ -193,7 +196,7 @@ public abstract class DataProvider {
     /**
      * Checks for Upcoming appointments based on Customer/Customer ID.
      */
-    public static void checkForAppt() {
+    public static void checkForAppt() throws Exception {
         User currentUser = DataProvider.getCurrentUser().get(0);
         boolean apptCollide = false;
         Instant instantStartTime = Instant.now();

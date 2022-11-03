@@ -43,12 +43,16 @@ public class ReportsScreen implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         // Initialize the type combo box
-        for ( Appointment appointment : DataProvider.getAllAppointments()) {
-            if (!typeComboBox.getItems().contains(appointment.getType())) {
-                typeComboBox.getItems().addAll(
-                        appointment.getType()
-                );
+        try {
+            for ( Appointment appointment : DataProvider.getAllAppointments()) {
+                if (!typeComboBox.getItems().contains(appointment.getType())) {
+                    typeComboBox.getItems().addAll(
+                            appointment.getType()
+                    );
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         // Initialize the Contact combo box
         for ( Contact contact : DataProvider.getAllContacts()) {

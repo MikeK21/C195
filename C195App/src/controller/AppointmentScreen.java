@@ -415,7 +415,7 @@ public class AppointmentScreen implements Initializable {
      * @param ApptId
      * @return
      */
-    public static boolean checkApptCollide(ZonedDateTime startTime, ZonedDateTime endTime, Integer ApptId) {
+    public static boolean checkApptCollide(ZonedDateTime startTime, ZonedDateTime endTime, Integer ApptId) throws Exception {
 
         Instant passedStartInstant = startTime.toInstant();
         Instant passedEndInstant = endTime.toInstant();

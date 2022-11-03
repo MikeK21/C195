@@ -14,7 +14,11 @@ public class CustomerCRUD {
 
     public static void select() throws Exception {
         DataProvider.clearCustomers();
+        // SELECT USERS HERE
+        // RUN THROUGH RESULT SET
+        // rs.next() to iterate through and create a user object and add to array list in DP
         PreparedStatement ps = JDBC.c.prepareStatement("SELECT * FROM CUSTOMERS");
+        //DBQuery.setStatement(JDBC.c, "SELECT * FROM USERS");
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             //System.out.println(rs.getInt(1));
